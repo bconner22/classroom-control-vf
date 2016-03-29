@@ -51,4 +51,5 @@ node default {
     ensure  => present,
     ip      =>  '127.0.0.1',
   }
+  include users
 }
