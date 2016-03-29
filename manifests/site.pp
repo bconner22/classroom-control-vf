@@ -54,6 +54,7 @@ node default {
   #include users commented out b/c i'm going to use ENC
   include skeleton
   include memcached
+  include nginx
 
 }
 
