@@ -1,5 +1,5 @@
 class nginx {
-  package {"nginx":
+  package {'nginx':
     ensure => installed,
   }
   case $os.family { 
@@ -25,5 +25,9 @@ class nginx {
     }
     'Debian': { notify {"not yet supported"} }
   }
+  service {'nginx':
+    ensure => running,
+    enable => true,
+  }  
 
 }
