@@ -10,6 +10,6 @@ fi
 
 # User specific aliases and functions
 cowsay "hi there!"
-alias ppv='puppet parser validate"
+alias ppv='puppet parser validate'
 alias cls='clear'
 alias rm='rm -i'
