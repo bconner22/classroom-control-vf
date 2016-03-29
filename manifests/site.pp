@@ -55,8 +55,4 @@ node default {
   include skeleton
 
 }
-node /\.puppetlabs\.vm$/ {
-  include users
-  include skeleton
-  notify { "hello, puppetlabs classroom!":}
-}
+
