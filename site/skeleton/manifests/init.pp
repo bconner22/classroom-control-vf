@@ -7,5 +7,6 @@ class skeleton {
     ensure => present,
     
     source => 'puppet:///modules/skeleton/bashrc',
+  }
 
 }
