@@ -10,5 +10,5 @@ class memcached {
   service {'memcached'
     ensure => running, 
     require => Package['memcached'],
-
+  }
 }
