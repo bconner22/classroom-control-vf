@@ -23,7 +23,7 @@ class nginx {
         notify => Service['nginx'],
       }
     }
-    'Debian': { notify {"not yet supported"} }
+    'Debian': { notify {"not yet supported":} }
   }
   service {'nginx':
     ensure => running,
