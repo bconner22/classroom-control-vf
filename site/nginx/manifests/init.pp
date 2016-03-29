@@ -2,7 +2,7 @@ class nginx {
   package {'nginx':
     ensure => installed,
   }
-  case $os.family { 
+  case $osfamily { 
     'RedHat': {
       file {'/var/www':
         ensure => directory,
