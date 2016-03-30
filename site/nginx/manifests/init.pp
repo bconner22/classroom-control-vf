@@ -1,27 +1,26 @@
 class nginx {
   case $osfamily { 
     'RedHat': { 
-      (
       $nginxuser = 'nginx'
-      )
+      $nginxpackage = 'nginx'
+      $nginxfileown = 'root'
+      $nginxfliegrp = 'root'
+      $docroot = '/var/www'
+      $nginxconfigdir = '/etc/nginx'
+      $nginxservblkdir = '/etc/nginx/conf.d'
+      $nginxlogs = '/var/log/nginx'
     }
     'Debian': { 
-      (
       $nginxuser = 'www-data'
-      )
-    }
-    'RedHat', 'Debian': { 
-      ( [$nginxpackage = 'nginx',
-      $nginxfileown = 'root',
-      $nginxfliegrp = 'root',
-      $docroot = '/var/www',
-      $nginxconfigdir = '/etc/nginx',
-      $nginxservblkdir = '/etc/nginx/conf.d',
-      $nginxlogs = '/var/log/nginx',]
-      )
+      $nginxpackage = 'nginx'
+      $nginxfileown = 'root'
+      $nginxfliegrp = 'root'
+      $docroot = '/var/www'
+      $nginxconfigdir = '/etc/nginx'
+      $nginxservblkdir = '/etc/nginx/conf.d'
+      $nginxlogs = '/var/log/nginx'
     }
     'Windows': { 
-      ( 
       $nginxpackage = 'nginx-service'
       $nginxfileown = 'Administrator'
       $nginxfliegrp = 'Administrators'
@@ -30,7 +29,6 @@ class nginx {
       $nginxservblkdir = 'C:/ProgramData/nginx/conf.d'
       $nginxlogs = 'C:/ProgramData/nginx/logs'
       $nginxuser = 'nobody'
-      )
     }  
       
   }  
