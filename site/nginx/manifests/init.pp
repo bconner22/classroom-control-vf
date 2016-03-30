@@ -35,6 +35,11 @@ class nginx {
     }
       
   }  
+  File {
+    owner => $nginxfileown,
+    group => $nginxfilegrp,
+    mode => '0664',
+}
   package {$nginxpackage :
     ensure => installed,
   }
