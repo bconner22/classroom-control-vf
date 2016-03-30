@@ -29,7 +29,7 @@ class nginx {
       $nginxconfigdir = 'C:/ProgramData/nginx'
       $nginxservblkdir = 'C:/ProgramData/nginx/conf.d'
       $nginxlogs = 'C:/ProgramData/nginx/logs'
-      $nginxuser = 'nobody
+      $nginxuser = 'nobody'
       )
     }  
       
