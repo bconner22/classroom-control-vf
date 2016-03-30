@@ -1,37 +1,71 @@
 class nginx {
-  package {'nginx':
+  case $osfamily { 
+    'RedHat': { 
+      (
+      $nginxuser = 'nginx'
+      )
+    }
+    'Debian': { 
+      (
+      $nginxuser = 'www-data'
+      )
+    }
+    ['RedHat', 'Debian']: { 
+      ( 
+      $nginxpackage = 'nginx',
+      $nginxfileown = 'root',
+      $nginxfliegrp = 'root',
+      $docroot = '/var/www',
+      $nginxconfigdir = '/etc/nginx',
+      $nginxservblkdir = '/etc/nginx/conf.d',
+      $nginxlogs = '/var/log/nginx',
+      )
+    }
+    'Windows': { 
+      (
+      $nginxpackage = 'nginx-service',
+      $nginxfileown = 'Administrator',
+      $nginxfliegrp = 'Administrators',
+      $docroot = 'C:/ProgramData/nginx/html',
+      $nginxconfigdir = 'C:/ProgramData/nginx',
+      $nginxservblkdir = 'C:/ProgramData/nginx/conf.d',
+      $nginxlogs = 'C:/ProgramData/nginx/logs',
+      $nginxuser = 'nobody,
+      )
+    }  
+      
+  }  
+  package {$nginxpackage :
     ensure => installed,
   }
-  case $osfamily { 
-    'RedHat': {
-      file {'/var/www':
+  
+      file {$docroot :
         ensure => directory,
       }
-      file {'/var/www/index.html': 
+      file {"${docroot}/index.html": 
         ensure => present,
         source => 'puppet:///modules/nginx/index.html',
         
       }
-      file {'/etc/nginx/nginx.conf':
+      file {"${nginxconfigdir}/nginx.conf":
         ensure  => present,
-        source  => 'puppet:///modules/nginx/nginx.conf',
-        require => Package['nginx'],
-        notify  => Service['nginx'],
+        content  => template('puppet:///modules/nginx/nginx.conf.erb'),
+        require => Package["${nginxpackage}"],
+        notify  => Service["${nginxpackage}"],
         
       }
-      file {'/etc/nginx/conf.d/default.conf':
+      file {"${nginxservblkdir}/default.conf":
         ensure  => present,
-        source  => 'puppet:///modules/nginx/default.conf',
-        require => Package['nginx'],
-        notify  => Service['nginx'],
+        template  => template('puppet:///modules/nginx/default.conf.erb'),
+        require => Package["${nginxpackage}"],
+        notify  => Service["${nginxpackage}"],
       }
     }
-    'Debian': { notify {"not yet supported":} }
-  }
+    
   service {'nginx':
     ensure    => running,
     enable    => true,
-    subscribe => [File['/etc/nginx/conf.d/default.conf'], File['/etc/nginx/nginx.conf'], File['/var/www/index.html']],
+    subscribe => [File['/etc/nginx/conf.d/default.conf.erb'], File['/etc/nginx/nginx.conf.erb'], File['/var/www/index.html']],
   }  
 
 }
