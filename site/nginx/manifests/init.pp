@@ -39,28 +39,28 @@ class nginx {
     ensure => installed,
   }
   
-      file {$docroot :
-        ensure => directory,
-      }
-      file {"${docroot}/index.html": 
-        ensure => present,
-        source => 'puppet:///modules/nginx/index.html',
-        
-      }
-      file {"${nginxconfigdir}/nginx.conf":
-        ensure  => present,
-        content  => template('puppet:///modules/nginx/nginx.conf.erb'),
-        require => Package["${nginxpackage}"],
-        notify  => Service["${nginxpackage}"],
-        
-      }
-      file {"${nginxservblkdir}/default.conf":
-        ensure  => present,
-        template  => template('puppet:///modules/nginx/default.conf.erb'),
-        require => Package["${nginxpackage}"],
-        notify  => Service["${nginxpackage}"],
-      }
-    }
+  file {$docroot :
+    ensure => directory,
+  }
+  file {"${docroot}/index.html": 
+    ensure => present,
+    source => 'puppet:///modules/nginx/index.html',
+    
+  }
+  file {"${nginxconfigdir}/nginx.conf":
+    ensure  => present,
+    content  => template('puppet:///modules/nginx/nginx.conf.erb'),
+    require => Package["${nginxpackage}"],
+    notify  => Service["${nginxpackage}"],
+    
+  }
+  file {"${nginxservblkdir}/default.conf":
+    ensure  => present,
+    template  => template('puppet:///modules/nginx/default.conf.erb'),
+    require => Package["${nginxpackage}"],
+    notify  => Service["${nginxpackage}"],
+  }
+    
     
   service {'nginx':
     ensure    => running,
