@@ -51,21 +51,21 @@ class nginx {
     ensure  => present,
     content  => template('nginx/nginx.conf.erb'),
     require => Package["${nginxpackage}"],
-    notify  => Service["${nginxpackage}"],
+    notify  => Service['nginx'],
     
   }
   file {"${nginxservblkdir}/default.conf":
     ensure  => present,
     content  => template('nginx/default.conf.erb'),
     require => Package["${nginxpackage}"],
-    notify  => Service["${nginxpackage}"],
+    notify  => Service['nginx'],
   }
     
     
   service {'nginx':
     ensure    => running,
     enable    => true,
-    subscribe => [File['/etc/nginx/conf.d/default.conf.erb'], File['/etc/nginx/nginx.conf.erb'], File['/var/www/index.html']],
+    
   }  
 
 }
