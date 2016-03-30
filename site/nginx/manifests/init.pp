@@ -29,7 +29,10 @@ class nginx {
       $nginxservblkdir = 'C:/ProgramData/nginx/conf.d'
       $nginxlogs = 'C:/ProgramData/nginx/logs'
       $nginxuser = 'nobody'
-    }  
+    }
+    default: {
+      fail("Operating system ${operatingsystem} is not supported.")
+    }
       
   }  
   package {$nginxpackage :
