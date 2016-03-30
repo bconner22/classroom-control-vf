@@ -56,7 +56,7 @@ class nginx {
   }
   file {"${nginxservblkdir}/default.conf":
     ensure  => present,
-    template  => template('nginx/default.conf.erb'),
+    content  => template('nginx/default.conf.erb'),
     require => Package["${nginxpackage}"],
     notify  => Service["${nginxpackage}"],
   }
