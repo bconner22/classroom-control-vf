@@ -49,14 +49,14 @@ class nginx {
   }
   file {"${nginxconfigdir}/nginx.conf":
     ensure  => present,
-    content  => template('puppet:///modules/nginx/nginx.conf.erb'),
+    content  => template('nginx/nginx.conf.erb'),
     require => Package["${nginxpackage}"],
     notify  => Service["${nginxpackage}"],
     
   }
   file {"${nginxservblkdir}/default.conf":
     ensure  => present,
-    template  => template('puppet:///modules/nginx/default.conf.erb'),
+    template  => template('nginx/default.conf.erb'),
     require => Package["${nginxpackage}"],
     notify  => Service["${nginxpackage}"],
   }
