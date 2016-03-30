@@ -13,14 +13,16 @@ class nginx {
         
       }
       file {'/etc/nginx/nginx.conf':
-        ensure => present,
-        source => 'puppet:///modules/nginx/nginx.conf',
-        notify => Service['nginx'],
+        ensure  => present,
+        source  => 'puppet:///modules/nginx/nginx.conf',
+        require => Package['nginx'],
+        notify  => Service['nginx'],
         
       }
       file {'/etc/nginx/conf.d/default.conf':
-        ensure => present,
-        source => 'puppet:///modules/nginx/default.conf',
+        ensure  => present,
+        source  => 'puppet:///modules/nginx/default.conf',
+        require => Package['nginx'],
         notify  => Service['nginx'],
       }
     }
