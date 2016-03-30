@@ -10,7 +10,7 @@ class nginx {
       $nginxuser = 'www-data'
       )
     }
-    ['RedHat', 'Debian']: { 
+    'RedHat', 'Debian': { 
       ( 
       $nginxpackage = 'nginx'
       $nginxfileown = 'root'
