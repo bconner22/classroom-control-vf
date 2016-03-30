@@ -21,7 +21,7 @@ class nginx {
       )
     }
     'Windows': { 
-      ( [$nginxpackage = 'nginx-service'
+      ( [$nginxpackage = 'nginx-service',
       $nginxfileown = 'Administrator',
       $nginxfliegrp = 'Administrators',
       $docroot = 'C:/ProgramData/nginx/html',
