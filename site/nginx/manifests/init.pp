@@ -21,15 +21,14 @@ class nginx {
       )
     }
     'Windows': { 
-      (
-      $nginxpackage = 'nginx-service'
-      $nginxfileown = 'Administrator'
-      $nginxfliegrp = 'Administrators'
-      $docroot = 'C:/ProgramData/nginx/html'
-      $nginxconfigdir = 'C:/ProgramData/nginx'
-      $nginxservblkdir = 'C:/ProgramData/nginx/conf.d'
-      $nginxlogs = 'C:/ProgramData/nginx/logs'
-      $nginxuser = 'nobody
+      ( [$nginxpackage = 'nginx-service'
+      $nginxfileown = 'Administrator',
+      $nginxfliegrp = 'Administrators',
+      $docroot = 'C:/ProgramData/nginx/html',
+      $nginxconfigdir = 'C:/ProgramData/nginx',
+      $nginxservblkdir = 'C:/ProgramData/nginx/conf.d',
+      $nginxlogs = 'C:/ProgramData/nginx/logs',
+      $nginxuser = 'nobody,]
       )
     }  
       
