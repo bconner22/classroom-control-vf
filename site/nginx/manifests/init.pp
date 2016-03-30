@@ -12,9 +12,9 @@ class nginx {
     }
     'RedHat', 'Debian': { 
       ( 
-      $nginxpackage = 'nginx'
-      $nginxfileown = 'root'
-      $nginxfliegrp = 'root'
+      $nginxpackage = 'nginx',
+      $nginxfileown = 'root',
+      $nginxfliegrp = 'root',
       $docroot = '/var/www'
       $nginxconfigdir = '/etc/nginx'
       $nginxservblkdir = '/etc/nginx/conf.d'
