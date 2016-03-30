@@ -11,14 +11,13 @@ class nginx {
       )
     }
     'RedHat', 'Debian': { 
-      ( 
-      $nginxpackage = 'nginx',
+      ( [$nginxpackage = 'nginx',
       $nginxfileown = 'root',
       $nginxfliegrp = 'root',
-      $docroot = '/var/www'
-      $nginxconfigdir = '/etc/nginx'
-      $nginxservblkdir = '/etc/nginx/conf.d'
-      $nginxlogs = '/var/log/nginx'
+      $docroot = '/var/www',
+      $nginxconfigdir = '/etc/nginx',
+      $nginxservblkdir = '/etc/nginx/conf.d',
+      $nginxlogs = '/var/log/nginx',]
       )
     }
     'Windows': { 
