@@ -51,6 +51,10 @@ node default {
     ensure  => present,
     ip      =>  '127.0.0.1',
   }
+  if $::virtual != 'physical' {
+    $virtual_caps = capitalize($::virtual)
+    notify {"This is a ${virtual_caps} machine.":} 
+  }  
   #include users commented out b/c i'm going to use ENC
   include skeleton
   include memcached
