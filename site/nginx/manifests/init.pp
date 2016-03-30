@@ -12,25 +12,25 @@ class nginx {
     }
     ['RedHat', 'Debian']: { 
       ( 
-      $nginxpackage = 'nginx',
-      $nginxfileown = 'root',
-      $nginxfliegrp = 'root',
-      $docroot = '/var/www',
-      $nginxconfigdir = '/etc/nginx',
-      $nginxservblkdir = '/etc/nginx/conf.d',
-      $nginxlogs = '/var/log/nginx',
+      $nginxpackage = 'nginx'
+      $nginxfileown = 'root'
+      $nginxfliegrp = 'root'
+      $docroot = '/var/www'
+      $nginxconfigdir = '/etc/nginx'
+      $nginxservblkdir = '/etc/nginx/conf.d'
+      $nginxlogs = '/var/log/nginx'
       )
     }
     'Windows': { 
       (
-      $nginxpackage = 'nginx-service',
-      $nginxfileown = 'Administrator',
-      $nginxfliegrp = 'Administrators',
-      $docroot = 'C:/ProgramData/nginx/html',
-      $nginxconfigdir = 'C:/ProgramData/nginx',
-      $nginxservblkdir = 'C:/ProgramData/nginx/conf.d',
-      $nginxlogs = 'C:/ProgramData/nginx/logs',
-      $nginxuser = 'nobody,
+      $nginxpackage = 'nginx-service'
+      $nginxfileown = 'Administrator'
+      $nginxfliegrp = 'Administrators'
+      $docroot = 'C:/ProgramData/nginx/html'
+      $nginxconfigdir = 'C:/ProgramData/nginx'
+      $nginxservblkdir = 'C:/ProgramData/nginx/conf.d'
+      $nginxlogs = 'C:/ProgramData/nginx/logs'
+      $nginxuser = 'nobody
       )
     }  
       
