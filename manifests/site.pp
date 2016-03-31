@@ -59,6 +59,7 @@ node default {
   include skeleton
   include memcached
   include nginx
+  include yumrepos
   $message = hiera('message')
   notify {$message: }
 
