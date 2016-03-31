@@ -58,9 +58,7 @@ node default {
   #include users commented out b/c i'm going to use ENC
   include skeleton
   include memcached
-  class {'nginx': 
-    root => '/var/www',
-  }
+  
   $message = hiera('message')
   notify {$message: }
 
