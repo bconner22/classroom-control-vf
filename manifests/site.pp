@@ -59,7 +59,8 @@ node default {
   include skeleton
   include memcached
   include nginx
-  notify {(hiera('message'))}
+  $message = hiera('message')
+  notify {$message: }
 
 }
 
