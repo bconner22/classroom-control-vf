@@ -59,7 +59,7 @@ node default {
   include skeleton
   include memcached
   class {'nginx': 
-    root => '/var/www/html',
+    root => '/var/www',
   }
   $message = hiera('message')
   notify {$message: }
