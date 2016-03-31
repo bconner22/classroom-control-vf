@@ -1,6 +1,6 @@
 class nginx (
   $root = undef,
-) {
+) inherits nginx::params {
 
   $docroot = $root ? {
     undef => $default_docroot,
