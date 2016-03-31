@@ -58,7 +58,7 @@ node default {
   #include users commented out b/c i'm going to use ENC
   include skeleton
   include memcached
-  
+  iclude nginx
   $message = hiera('message')
   notify {$message: }
 
